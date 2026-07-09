@@ -1,0 +1,126 @@
+---
+title: "My website"
+author: "Claudia"
+format:
+  html:
+   code-tools: 
+     source: true
+     toggle: false
+     caption: Show the code for this document
+   toc: true
+   toc-location: right
+   number-sections: true
+   grid:
+    sidebar-width: 300px # lato sinistro
+    body-width: 900px # corpo del testo
+    margin-width: 300px # lato destro
+    gutter-width: 1.5rem
+   theme:
+    light: ninty # mi permette di fare switch tra light e dark
+    dark: superhero
+self_contained: true # utile per quando invii html a qualcuno, così non deve scaricare le immagini
+lang: it # per settare la lingua del documento
+bibliography: biblio.bib # per la bibliografia
+reference-location: margin # per mettere le referenze in margine
+citation-location: margin # per mettere le citazioni in margine
+execute:
+  echo: false # non fa vedere il codice di default
+---
+
+in questo modo si vedono anche le righe di codice
+```{r}
+head(cars)
+```
+
+se non voglio le righe di codice
+```{r}
+#| echo: false
+head(cars)
+```
+
+@lst-default presents the default settings of the code chunks
+```{r}
+#| lst-label: lst-default
+#| lst-cap: Default settings
+head(cars)
+```
+
+```{r}
+#| echo: false
+#| lst-label: lst-echoF
+#| lst-cap: Echo FALSE
+head(cars)
+```
+
+```{r}
+#| echo: true
+#| eval: false
+#| lst-label: lst-echoF
+#| lst-cap: Echo TRUE, EVAL FALSE
+head(cars)
+```
+
+
+@fig-normal presents a figure of the normal distribution
+```{r}
+#| label: fig-normal
+#| fig-cap: Normal distribution
+x = seq(-3,3, length.ou = 1000)
+dx = dnorm(x)
+plot(x, dx, type = "l", cex = 2, lwd = 3)
+```
+
+In @fig-normalProperties we put together the density, cumulative and quantile plot
+
+```{r}
+#| layout-ncol: 3
+#| label: fig-normalProperties
+#| fig-cap: Properties of the normal distribution
+#| fig-subcap:
+#|   - "Density"
+#|   - "Cumulative"
+#|   - "Quantile"
+
+plot(x, dnorm(x), type = "l", lwd = 3)
+plot(x, pnorm(x), type = "l", lwd = 3)
+plot(x, qnorm(pnorm(x)), type = "l", lwd = 3)
+```
+
+se a lezione si vuole far vedere gli errori che possono uscire da R
+
+```{r}
+#| echo: true
+#| error: true
+mean(y)
+```
+
+prepariamo delle tabelle
+@tbl-tab presents a table of the first rows of the cars dataset
+
+```{r}
+#| tbl-cap: This is my first table
+#| lable: tbl-tab
+library(knitr)
+kable(head(cars))
+```
+
+
+```{r}
+#| fig-column: margin
+#| tbl-cap: The table
+#| fig-cap: The plot
+kable(head(cars))
+plot(cars$speed,cars$dist)
+```
+
+
+
+
+
+
+
+
+
+
+
+
